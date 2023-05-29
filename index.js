@@ -32,7 +32,12 @@ async function run() {
     const reviewCollection = client.db("bistroDB").collection("reviews");
     const cartCollection = client.db("bistroDB").collection("carts");
 
-
+    app.get('/menu', async(req, res) =>{
+        const result = await menuCollection.find().toArray();
+        res.send(result);
+    })
+    
+   
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
